@@ -32,7 +32,7 @@ public class AuthenticationService {
             if (userRepository.existsById(registerRequest.getEmail().toString())){
                 throw new IllegalArgumentException("User with "+registerRequest.getEmail().toString()+" email already exists.");
             }
-            userService.saveUser(new User(registerRequest.getMobile_number(),registerRequest.getUser_name(),registerRequest.getEmail(),registerRequest.getPassword(), new HashSet<>()));
+            userService.saveUser(new User(registerRequest.getUser_id(), registerRequest.getMobile_number(),registerRequest.getUser_name(),registerRequest.getEmail(),registerRequest.getPassword(), new HashSet<>()));
             userService.addToUser(registerRequest.getEmail(),"ROLE_USER" );
             User user = userRepository.findByEmail(registerRequest.getEmail()).orElseThrow();
             return ResponseEntity.ok(user);

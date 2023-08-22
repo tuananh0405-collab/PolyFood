@@ -27,7 +27,8 @@ public class User implements UserDetails {
     }
 
     @Id
-    private String user_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer user_id;
     private String user_name;
     private String email;
     private String password;
@@ -41,8 +42,8 @@ public class User implements UserDetails {
     private Date updated_At;
     private Date created_At;
 
-    public User(String mobile_number, String user_name, String email, String pasword, Set<Role> roles){
-        this.user_id=email;
+    public User(Integer user_id,String mobile_number, String user_name, String email, String pasword, Set<Role> roles){
+        this.user_id=user_id;
         this.mobile_number = mobile_number;
         this.user_name=user_name;
         this.email=email;

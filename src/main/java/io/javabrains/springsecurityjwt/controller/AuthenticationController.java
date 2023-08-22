@@ -2,6 +2,7 @@ package io.javabrains.springsecurityjwt.controller;
 
 import io.javabrains.springsecurityjwt.auth.AuthenticationRequest;
 import io.javabrains.springsecurityjwt.auth.RegisterRequest;
+import io.javabrains.springsecurityjwt.exception.UserNotFoundException;
 import io.javabrains.springsecurityjwt.model.User;
 import io.javabrains.springsecurityjwt.model.UserDisplay;
 import io.javabrains.springsecurityjwt.repository.UserDisplayRepository;
@@ -43,6 +44,7 @@ public class AuthenticationController {
         List<UserDisplay> userDisplays = new ArrayList<>();
         for (User user : users) {
             UserDisplay userDisplay = new UserDisplay();
+            userDisplay.setUser_id(user.getUser_id());
             userDisplay.setUser_name(user.getUser_name());
             userDisplay.setEmail(user.getEmail());
             userDisplay.setMobile_number(user.getMobile_number());
@@ -51,5 +53,33 @@ public class AuthenticationController {
         }
 
         return userDisplays;
+    }
+    @PostMapping("/addUser")
+    User newUser(@RequestBody User newUser){
+        return userRepository.save(newUser);
+    }
+    @GetMapping("/getUserById/{id}")
+    User getUserById(@PathVariable String id){
+        return userRepository.findById(id)
+                .orElseThrow(()->new UserNotFoundException(id));
+    }
+    @PutMapping("/updateUserById/{id}")
+    User updateUser(@RequestBody User newUser, @PathVariable String id){
+        return userRepository.findById(id)
+                .map(user -> {
+                    user.setUser_name(newUser.getUser_name());
+                    user.setEmail(newUser.getEmail());
+//                    user.s(newUser.getAddress());
+                    user.setMobile_number(newUser.getMobile_number());
+                    return userRepository.save(user);
+                }).orElseThrow(()->new UserNotFoundException((id)));
+    }
+    @DeleteMapping("/deleteUserById/{id}")
+    String deleteUser(@PathVariable String id){
+        if(!userRepository.existsById(id)){
+            throw new UserNotFoundException(id);
+        }
+        userRepository.deleteById(id);
+        return "User with id "+id+" has been successfully deleted.";
     }
 }

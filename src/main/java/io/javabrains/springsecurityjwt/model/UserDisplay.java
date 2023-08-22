@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "Users_display")
 public class UserDisplay {
     @Id
-    private String user_id;
+    private Integer user_id;
     private String user_name;
     private String email;
     private String mobile_number;
