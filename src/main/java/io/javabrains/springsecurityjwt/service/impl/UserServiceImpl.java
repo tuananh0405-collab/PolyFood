@@ -13,6 +13,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -34,6 +36,8 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
+
+
     @Override
     public Role saveRole(Role role) {
         return roleRepository.save(role);
@@ -51,4 +55,8 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByEmail(username).get();
         user.getRoles().add(role);
     }
+
+
+
+
 }

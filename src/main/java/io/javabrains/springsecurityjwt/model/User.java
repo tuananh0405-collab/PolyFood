@@ -41,6 +41,8 @@ public class User implements UserDetails {
     private Set<Role> roles = new HashSet<>();
     private Date updated_At;
     private Date created_At;
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
 
     public User(Integer user_id,String mobile_number, String user_name, String email, String pasword, Set<Role> roles){
         this.user_id=user_id;

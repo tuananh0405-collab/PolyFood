@@ -2,9 +2,12 @@ package io.javabrains.springsecurityjwt.controller;
 
 import io.javabrains.springsecurityjwt.auth.AuthenticationRequest;
 import io.javabrains.springsecurityjwt.auth.RegisterRequest;
+import io.javabrains.springsecurityjwt.exception.ProductNotFoundException;
 import io.javabrains.springsecurityjwt.exception.UserNotFoundException;
+import io.javabrains.springsecurityjwt.model.Products;
 import io.javabrains.springsecurityjwt.model.User;
 import io.javabrains.springsecurityjwt.model.UserDisplay;
+import io.javabrains.springsecurityjwt.repository.ProductsRepository;
 import io.javabrains.springsecurityjwt.repository.UserDisplayRepository;
 import io.javabrains.springsecurityjwt.repository.UserRepository;
 import io.javabrains.springsecurityjwt.service.AuthenticationService;
@@ -27,6 +30,8 @@ public class AuthenticationController {
     private UserRepository userRepository;
     @Autowired
     private UserDisplayRepository userDisplayRepository;
+    @Autowired
+    private ProductsRepository productsRepository;
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterRequest registerRequest) {
@@ -81,5 +86,41 @@ public class AuthenticationController {
         }
         userRepository.deleteById(id);
         return "User with id "+id+" has been successfully deleted.";
+    }
+
+    @GetMapping("/getAllProducts")
+    List<Products> getAllProducts() {
+        return productsRepository.findAll();
+    }
+    @PostMapping("/addProduct")
+    Products addProduct(@RequestBody Products newProduct){
+        return productsRepository.save(newProduct);
+    }
+    @GetMapping("/getProductById/{id}")
+    Products getProductById(@PathVariable Integer id){
+        return productsRepository.findById(id)
+                .orElseThrow(()->new ProductNotFoundException(id));
+    }
+    @PutMapping("/updateProductById/{id}")
+    Products updateProduct(@RequestBody Products newProduct, @PathVariable Integer id){
+        return productsRepository.findById(id)
+                .map(product -> {
+                    product.setProduct_name(newProduct.getProduct_name());
+                    product.setProduct_image(newProduct.getProduct_image());
+                    product.setCategory(newProduct.getCategory());
+                    product.setStock(newProduct.getStock());
+                    product.setPrice(newProduct.getPrice());
+                    product.setDiscount(newProduct.getDiscount());
+                    product.setRating(newProduct.getRating());
+                    return productsRepository.save(product);
+                }).orElseThrow(()->new ProductNotFoundException(id));
+    }
+    @DeleteMapping("/deleteProductById/{id}")
+    String deleteProduct(@PathVariable Integer id){
+        if(!productsRepository.existsById(id)){
+            throw new ProductNotFoundException(id);
+        }
+        productsRepository.deleteById(id);
+        return "Product with id "+id+" has been successfully deleted.";
     }
 }
