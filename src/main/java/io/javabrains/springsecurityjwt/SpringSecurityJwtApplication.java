@@ -45,11 +45,10 @@ public class SpringSecurityJwtApplication {
             userService.saveUser(new User(2, "0916961458", "tuananh1", "vutuananh04051@gmail.com", "pass", new HashSet<>()));
             userService.saveUser(new User(3, "0916961458", "tuananh2", "vutuananh04052@gmail.com", "pass", new HashSet<>()));
 
-//			userService.addToUser("vutuananh0405@gmail.com","ROLE_USER");
-//                userService.addToUser("vutuananh04051@gmail.com", "ROLE_ADMIN");
-//			userService.addToUser("vutuananh04052@gmail.com","ROLE_MANAGER");
+//            userService.addToUser("vutuananh0405@gmail.com", "ROLE_USER");
+//            userService.addToUser("vutuananh04051@gmail.com", "ROLE_ADMIN");
+//            userService.addToUser("vutuananh04052@gmail.com", "ROLE_MANAGER");
 
-//
 
         };
     }

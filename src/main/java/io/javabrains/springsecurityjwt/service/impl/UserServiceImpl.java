@@ -37,7 +37,6 @@ public class UserServiceImpl implements UserService {
     }
 
 
-
     @Override
     public Role saveRole(Role role) {
         return roleRepository.save(role);
@@ -45,18 +44,35 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addToUser(String username, String rolename) {
-        if(!userRepository.findByEmail(username).isPresent()){
-            throw new IllegalArgumentException("User with email "+username+" does not exist!");
+        if (!userRepository.findByEmail(username).isPresent()) {
+            throw new IllegalArgumentException("User with email " + username + " does not exist!");
         }
         Role role = roleRepository.findByName(rolename);
-        if(role==null){
-            throw new IllegalArgumentException("Role with name "+rolename+" does not exist!");
+        if (role == null) {
+            throw new IllegalArgumentException("Role with name " + rolename + " does not exist!");
         }
+//        if (userRepository.findByEmail(username).isPresent() && userRepository.findByEmail(username).get().getRoles().contains(rolename))
+//            throw new IllegalArgumentException("null");
         User user = userRepository.findByEmail(username).get();
         user.getRoles().add(role);
     }
-
-
+//@Override
+//public void addToUser(String username, String rolename) {
+//    Optional<User> userOptional = userRepository.findByEmail(username);
+//    System.out.println(userOptional);
+//    if (!userOptional.isPresent()) {
+//        throw new IllegalArgumentException("User with email " + username + " does not exist!");
+//    }
+//
+//    Role role = roleRepository.findByName(rolename);
+//    System.out.println(role);
+//    if (role == null) {
+//        throw new IllegalArgumentException("Role with name " + rolename + " does not exist!");
+//    }
+//
+//    if(!userOptional.get().getRoles().contains(role)) userOptional.get().getRoles().add(role);
+//
+//}
 
 
 }

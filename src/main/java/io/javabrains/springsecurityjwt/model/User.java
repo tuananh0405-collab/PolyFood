@@ -30,9 +30,11 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer user_id;
     private String user_name;
+    @Column(unique = true)
     private String email;
     private String password;
     private String mobile_number;
+    private String address;
     @ManyToMany
     @JoinTable(name = "user_role",
     joinColumns = @JoinColumn(name = "User_id"),
@@ -41,6 +43,7 @@ public class User implements UserDetails {
     private Set<Role> roles = new HashSet<>();
     private Date updated_At;
     private Date created_At;
+
     @OneToMany(mappedBy = "user")
     private List<Order> orders;
 

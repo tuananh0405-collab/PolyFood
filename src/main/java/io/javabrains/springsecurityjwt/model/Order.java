@@ -1,5 +1,6 @@
 package io.javabrains.springsecurityjwt.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,7 +36,10 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
+
+
 
     private Double original_price;
     private Double actual_price;
@@ -43,9 +47,12 @@ public class Order {
     private String email;
     private String mobile_number;
     private String address;
+    private Integer quantity;
+
 
     @ManyToOne
     @JoinColumn(name = "order_status_id")
+    @JsonIgnore
     private OrderStatus orderStatus;
 
     private Date updated_At;
