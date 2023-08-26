@@ -31,9 +31,12 @@ public class SecurityConfig {
         http.sessionManagement().sessionCreationPolicy(STATELESS);
         http.authorizeRequests()
                 .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
-                .requestMatchers("/api/v1/auth/**").permitAll()
-                .requestMatchers("/demo/admin/**").hasAnyAuthority("ROLE_ADMIN")
-                .requestMatchers("/demo/user/**").hasAnyAuthority("ROLE_ADMIN","ROLE_USER")
+                .requestMatchers("/pub/**").permitAll()
+
+                .requestMatchers("/forgot-password/**").permitAll()
+                .requestMatchers("/api/v1/auth/admin/**").hasAnyAuthority("ROLE_ADMIN")
+//                .requestMatchers("/demo/admin/**").hasAnyAuthority("ROLE_ADMIN")
+//                .requestMatchers("/demo/user/**").hasAnyAuthority("ROLE_ADMIN","ROLE_USER")
                 .and()
                 .csrf().disable()
                 .cors(Customizer.withDefaults())

@@ -8,4 +8,9 @@ public interface UserService {
     Role saveRole(Role role);
     void addToUser(String username, String rolename);
 
+    public String generatePasswordResetToken(User user);
+    void updatePassword(User user, String newPassword);
+    void updateResetPasswordToken(String token, String email);
+    User getByResetToken(String token);
+
 }

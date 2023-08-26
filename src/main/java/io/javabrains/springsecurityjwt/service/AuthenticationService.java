@@ -29,7 +29,7 @@ public class AuthenticationService {
 
     public ResponseEntity<?> register(RegisterRequest registerRequest){
         try {
-            if (userRepository.existsById(registerRequest.getEmail().toString())){
+            if (userRepository.findByEmail(registerRequest.getEmail())==null){
                 throw new IllegalArgumentException("User with "+registerRequest.getEmail().toString()+" email already exists.");
             }
             userService.saveUser(new User(registerRequest.getUser_id(), registerRequest.getMobile_number(),registerRequest.getUser_name(),registerRequest.getEmail(),registerRequest.getPassword(), new HashSet<>()));
