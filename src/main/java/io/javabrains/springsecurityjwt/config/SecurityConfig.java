@@ -32,8 +32,7 @@ public class SecurityConfig {
         http.authorizeRequests()
                 .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                 .requestMatchers("/pub/**").permitAll()
-
-                .requestMatchers("/forgot-password/**").permitAll()
+                .requestMatchers("/user-request/**").permitAll()
                 .requestMatchers("/api/v1/auth/admin/**").hasAnyAuthority("ROLE_ADMIN")
 //                .requestMatchers("/demo/admin/**").hasAnyAuthority("ROLE_ADMIN")
 //                .requestMatchers("/demo/user/**").hasAnyAuthority("ROLE_ADMIN","ROLE_USER")

@@ -47,6 +47,7 @@ public class User implements UserDetails {
     private String resetToken;
     private String resetTokenExpiration;
 
+
     @OneToMany(mappedBy = "user")
     private List<Order> orders;
 
