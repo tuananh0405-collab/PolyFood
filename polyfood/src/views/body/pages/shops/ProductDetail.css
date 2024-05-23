@@ -1,0 +1,9 @@
+.ant-segmented-item-label {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  font-size: larger;
+  height: 50px;
+  width: 250px;
+  color: rgb(20, 20, 20);
+}

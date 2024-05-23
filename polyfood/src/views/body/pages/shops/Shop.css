@@ -1,0 +1,7 @@
+.active {
+  background: red;
+  color: white;
+}
+.clicked {
+  color: rgb(188, 32, 32);
+}

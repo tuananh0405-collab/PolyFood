@@ -1,0 +1,212 @@
+
+ * {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif
+}
+
+.header1 {
+  align-items: center;
+  display: flex;
+  font-size: 14px;
+  justify-content: space-between;
+  line-height: 24px;
+  text-align: left;
+  height: 50px;
+}
+hr {
+  font-weight: 100;
+  margin-left: 15px;
+  margin-right: 15px;
+  border: 1px solid lightgray;
+}
+.languages {
+  margin-left: 10px;
+  font-size: 17px;
+}
+
+.languages:hover {
+  cursor: pointer;
+  color: red;
+}
+
+.delivery {
+  align-items: center;
+  display: flex;
+  font-size: 14px;
+  justify-content: space-between;
+  line-height: 24px;
+  letter-spacing: 0.8px;
+  padding-right: 10px;
+}
+.delivery svg {
+  padding-right: 10px;
+  transform: rotate(-45deg);
+}
+
+.header2 {
+  display: flex;
+  height: 100px;
+  width: 100%;
+}
+.logo {
+ 
+  font-size: 14px;
+  line-height: 24px;
+  padding: 0px 15px;
+  text-align: left;
+}
+.logo :hover {
+  cursor: pointer;
+}
+.logo img {
+  display: inline;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: left;
+  height: 100%;
+}
+.mainBar {
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  line-height: 24px;
+  padding: 0px 15px;
+  text-align: left;
+  font-weight: 450;
+}
+.mainBar ul {
+  font-size: 14px;
+  line-height: 24px;
+  margin: -5px 0px 0px;
+  text-align: center;
+}
+.mainBar ul a {
+  color: black;
+  display: inline-block;
+  font-size: 15px;
+  /* font-weight: 350; */
+  letter-spacing: 0.8px;
+  line-height: 94px;
+  text-align: center;
+}
+.mainBar ul a:hover {
+  cursor: pointer;
+  color: rgb(255, 145, 0);
+  /* animation-duration: 500; */
+}
+.mainBar ul li {
+  display: inline-block;
+  font-size: 24px;
+  line-height: 24px;
+  padding: 0px 10px;
+  text-align: center;
+}
+.options {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 20px;
+  line-height: 24px;
+  padding: 0px 15px;
+  text-align: left;
+}
+.option {
+  font-size: 20px;
+  line-height: 24px;
+  text-align: left;
+}
+.option button {
+  align-items: flex-start;
+  display: inline-block;
+  font-size: 23px;
+  line-height: 24px;
+  padding: 1px 6px;
+  text-align: center;
+  background: none;
+  border: none;
+}
+.option button a svg {
+  color: rgb(255, 145, 0);
+  display: inline-block;
+  font-size: 23px;
+  line-height: 23px;
+  text-align: center;
+}
+.option button a svg:hover {
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
+    brightness(104%) contrast(97%);
+}
+
+.header {
+  position: relative;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+
+
+.header2.active {
+  animation: line 1000ms ease-in;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  background: white;
+}
+@keyframes line {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.searchDropDown::before {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 1rem;
+  top: -2px;
+  border-bottom: 10px solid rgb(255, 145, 0);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+
+.ant-input-search-button {
+  background: rgb(255, 145, 0);
+  align-items: center;
+}
+.ant-input-search-button:hover {
+  background: #000;
+}
+.ant-btn-primary:hover {
+  background: #000;
+}
+.ant-btn-icon {
+  justify-content: center;
+  padding-bottom: 10px;
+}
+.signIn {
+  margin-right: 5px;
+} 
+.hover-div {
+  /* display: inline-block; */
+  padding: 10px;
+  transition: transform 0.3s;
+}
+
+.hover-text {
+  margin: 0;
+  transition: margin-left 0.3s;
+}
+
+.hover-div:hover {
+  transform: translateX(5px); 
+}
+
+.hover-div:hover .hover-text {
+  margin-left: 5px; 
+}

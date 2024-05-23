@@ -1,0 +1,126 @@
+.btn {
+  background: rgb(136, 237, 136);
+  color: white;
+  width: fit-content;
+  transition: 0.5s ease-out;
+  background: linear-gradient(to left, green 50%, red 50%) right;
+  background-size: 200%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-position: left;
+  background-size: 200%;
+}
+
+.btn:hover-out {
+  background-position: right;
+  background-size: 200%; /* Ensure the background-size remains consistent */
+}
+
+.subscribe {
+  background: rgb(110, 235, 110);
+  color: white;
+  transition: background 1s;
+}
+.subscribe:hover {
+  cursor: pointer;
+  background: red;
+}
+.social:hover {
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg)
+    brightness(104%) contrast(97%);
+  cursor: pointer;
+}
+
+.countdown {
+  font-size: 100px;
+  margin-right: 10px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes delay {
+  0% {
+    animation-delay: 0ms;
+  }
+  100% {
+    animation-delay: 1000ms;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1000ms ease-in-out forwards, delay 1ms linear forwards;
+}
+
+.line1{
+  animation: line 1000ms ease-in;
+}
+.line2{
+  animation: line 2000ms ease-in;
+}
+.line3{
+  animation: line 3000ms ease-in;
+  cursor: pointer;
+}
+
+@keyframes line {
+  0% { opacity:0}
+  100%{ opacity:1}
+}
+
+.sp {
+  display: flex;
+  justify-content: space-between;
+  font-size: 17px;
+  line-height: 24px;
+  text-align: center;
+}
+
+.sp > .sp-item {
+  width: 390px;
+  padding-top: 35px;
+}
+
+.sp > .sp-item > .img-text {
+  padding-left: 100px;
+}
+
+.sp > .item1 {
+  background-color: rgb(17, 210, 165);
+  background-image: url("https://polyfood.store/assets/img/icon-img/support-5.png");
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-position-y: bottom;
+}
+
+.sp > .item2 {
+  background-color: rgb(241, 241, 140);
+  background-image: url("https://polyfood.store/assets/img/icon-img/support-6.png");
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-position-y: bottom;
+}
+
+.sp > .item3 {
+  background-color: rgb(102, 245, 102);
+  background-image: url("https://polyfood.store/assets/img/icon-img/support-7.png");
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-position-y: bottom;
+}
+.ant-statistic-content-value {
+  font-size: 80px;
+  word-spacing: 75px;
+}
